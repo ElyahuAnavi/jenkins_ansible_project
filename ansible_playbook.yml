@@ -1,0 +1,12 @@
+---
+- name: Update configuration on remote server
+  hosts: all
+  tasks:
+    - name: Copy updated XML to remote server
+      copy:
+        src: ./config.xml
+        dest: /path/to/remote/config.xml
+    - name: Restart service after update
+      service:
+        name: example_service
+        state: restarted
