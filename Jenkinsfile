@@ -1,17 +1,25 @@
 pipeline {
     agent any
+
     stages {
+        stage('Checkout Code') {
+            steps {
+                checkout scm
+            }
+        }
         stage('List Files') {
             steps {
                 bat 'dir' // מציג את כל הקבצים בתיקיית ה-Workspace
             }
         }
-        stage('Run Python Script') {
+        stage('Run Ansible Playbook') {
             steps {
-                bat 'python script.py' // מריץ את הסקריפט
+                // קריאה ל-Playbook ושימוש בקובץ inventory
+                ansiblePlaybook playbook: 'ansible_playbook.yml', inventory: 'inventory'
             }
         }
     }
+
     post {
         success {
             echo 'Pipeline completed successfully!!'

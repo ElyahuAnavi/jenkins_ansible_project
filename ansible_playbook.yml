@@ -1,12 +1,16 @@
 ---
-- name: Update configuration on remote server
-  hosts: all
+- name: Update configuration on localhost
+  hosts: localhost
   tasks:
-    - name: Copy updated XML to remote server
+    - name: Copy updated XML to local machine
       copy:
         src: ./config.xml
-        dest: /path/to/remote/config.xml
-    - name: Restart service after update
-      service:
+        dest: C:/path/to/local/config.xml  # כאן עדכן את הנתיב שבו תרצה שהקובץ יועתק
+
+    - name: Restart service after update (optional)
+      win_service:
         name: example_service
         state: restarted
+
+    - name: Run Python script
+      win_shell: python C:/path/to/local/script.py  # עדכן את הנתיב לסקריפט
