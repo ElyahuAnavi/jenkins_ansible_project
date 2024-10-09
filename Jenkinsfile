@@ -1,13 +1,13 @@
 pipeline {
     agent any
-    tools {
-        'PythonInstallation' 'Python_3.12.6' // שם הכלי בהתאם ל-ShiningPanda
-    }
     stages {
         stage('Run Python Script') {
             steps {
-                sh 'python --version' // וידוא שה-Python עובד
-                bat 'python script.py' // הרצת הסקריפט
+                // הגדרת python לפעולה בסביבת pipeline
+                withPythonEnv('Python_3.12.6') {
+                    sh 'python --version' // בדוק את גרסת Python
+                    bat 'python script.py' // הרץ את סקריפט ה-Python
+                }
             }
         }
     }
