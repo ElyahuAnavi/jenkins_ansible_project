@@ -11,4 +11,4 @@ def update_xml(file_path):
 
 if __name__ == "__main__":
     update_xml('config.xml')
-    print("XML file updated successfully.")
+    print("XML file updated successfully.!!")
