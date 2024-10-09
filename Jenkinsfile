@@ -1,11 +1,13 @@
 pipeline {
     agent any
+    tools {
+        python 'Python_3.12.6' // שם הגרסה שהגדרת
+    }
     stages {
-        stage('Run Batch Script') {
+        stage('Run Python Script') {
             steps {
-                script {
-                    bat 'batch_script.bat'
-                }
+                sh 'python --version' // וידוא שה-Python עובד
+                bat 'python script.py' // הרצת הסקריפט
             }
         }
     }
