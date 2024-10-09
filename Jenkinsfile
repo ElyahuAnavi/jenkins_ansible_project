@@ -1,16 +1,14 @@
 pipeline {
     agent any
     stages {
-        stage('Clean Workspace') {
+        stage('List Files') {
             steps {
-                cleanWs() // לנקות את ה-Workspace
+                bat 'dir' // מציג את כל הקבצים בתיקיית ה-Workspace
             }
         }
         stage('Run Python Script') {
             steps {
-                // הפעלת הסקריפט באמצעות פקודת Batch המתאימה ל-Windows
-                bat 'python --version'
-                bat 'python script.py'
+                bat 'python script.py' // מריץ את הסקריפט
             }
         }
     }
