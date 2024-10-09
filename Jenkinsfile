@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        python 'Python_3.12.6' // שם הגרסה שהגדרת
+        'PythonInstallation' 'Python_3.12.6' // שם הכלי בהתאם ל-ShiningPanda
     }
     stages {
         stage('Run Python Script') {
