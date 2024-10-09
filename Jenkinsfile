@@ -1,13 +1,13 @@
 pipeline {
     agent any
+    tools {
+        python 'Python_3.12.6' // יש להשתמש בשם התקנת Python כפי שהוגדר ב-Jenkins
+    }
     stages {
         stage('Run Python Script') {
             steps {
-                // הגדרת python לפעולה בסביבת pipeline
-                withPythonEnv('Python_3.12.6') {
-                    sh 'python --version' // בדוק את גרסת Python
-                    bat 'python script.py' // הרץ את סקריפט ה-Python
-                }
+                sh 'python --version' // בדיקה ש-Python עובד
+                bat 'python script.py' // הפעלת הסקריפט
             }
         }
     }
