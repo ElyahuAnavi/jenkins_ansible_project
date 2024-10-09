@@ -1,25 +1,15 @@
 pipeline {
     agent any
     stages {
-        stage('Clean Workspace') {
+        stage('Check PATH') {
             steps {
-                cleanWs() // לנקות את ה-Workspace
+                bat 'echo %PATH%' // מציג את משתנה ה-PATH הנוכחי
             }
         }
         stage('Run Python Script') {
             steps {
-                // הפעלת הסקריפט באמצעות פקודת Batch המתאימה ל-Windows
-                bat 'python --version'
-                bat 'python script.py'
+                bat 'python --version' // בדוק את גרסת Python
             }
-        }
-    }
-    post {
-        success {
-            echo 'Pipeline completed successfully!!'
-        }
-        failure {
-            echo 'Pipeline failed!'
         }
     }
 }
